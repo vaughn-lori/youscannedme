@@ -132,14 +132,12 @@ function ProfilePage({ profile, onNavigate }) {
         <p className="profile-name">— {p.name}</p>
 
         {isLori && (
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0.5rem",margin:"1rem 0"}}>
-            <div style={{display:"flex",flexDirection:"column",gap:"0.5rem"}}>
-              <img src={P1} alt="Lori" style={{width:"100%",aspectRatio:"1/1",objectFit:"cover",objectPosition:"top",borderRadius:"12px"}} />
-              <img src={P3} alt="Lori with friends" style={{width:"100%",aspectRatio:"1/1",objectFit:"cover",borderRadius:"12px"}} />
-            </div>
-            <div style={{display:"flex",flexDirection:"column",gap:"0.5rem"}}>
-              <img src={P2} alt="Broncos game" style={{width:"100%",aspectRatio:"1/1",objectFit:"cover",objectPosition:"top",borderRadius:"12px"}} />
-              <img src={P4} alt="Dinner with friend" style={{width:"100%",aspectRatio:"1/1",objectFit:"cover",objectPosition:"top",borderRadius:"12px"}} />
+          <div style={{margin:"1rem 0"}}>
+            <img src={P1} alt="Lori" style={{width:"100%",aspectRatio:"4/3",objectFit:"cover",objectPosition:"center 20%",borderRadius:"14px",marginBottom:"0.5rem"}} />
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:"0.5rem"}}>
+              <img src={P2} alt="Broncos game" style={{width:"100%",aspectRatio:"1/1",objectFit:"cover",objectPosition:"top",borderRadius:"10px"}} />
+              <img src={P3} alt="Lori with friends" style={{width:"100%",aspectRatio:"1/1",objectFit:"cover",objectPosition:"top",borderRadius:"10px"}} />
+              <img src={P4} alt="Dinner with friend" style={{width:"100%",aspectRatio:"1/1",objectFit:"cover",objectPosition:"top",borderRadius:"10px"}} />
             </div>
           </div>
         )}
@@ -182,16 +180,16 @@ function ProfilePage({ profile, onNavigate }) {
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0.75rem"}}>
               <div className="friend-card">
                 <p className="friend-name">Michelle</p>
-                <p className="friend-tag">Single. Curious. Worth it.</p>
-                <a className="friend-ig" href="https://instagram.com/michelle" target="_blank" rel="noopener noreferrer">
-                  <IgIcon size={12} /> @michelle
+                <p className="friend-tag">Foodie. Wine snob. Traveler. Dog lover.</p>
+                <a className="friend-ig" href="https://instagram.com/mbarnesny" target="_blank" rel="noopener noreferrer">
+                  <IgIcon size={12} /> @mbarnesny
                 </a>
               </div>
               <div className="friend-card">
                 <p className="friend-name">Stephanie</p>
-                <p className="friend-tag">Single. Curious. Worth it.</p>
-                <a className="friend-ig" href="https://instagram.com/stephanie" target="_blank" rel="noopener noreferrer">
-                  <IgIcon size={12} /> @stephanie
+                <p className="friend-tag">Urban farmer. Beekeeper. Wino. Sci-fi nerd.</p>
+                <a className="friend-ig" href="https://instagram.com/vina_colorado" target="_blank" rel="noopener noreferrer">
+                  <IgIcon size={12} /> @vina_colorado
                 </a>
               </div>
             </div>
