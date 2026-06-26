@@ -93,12 +93,7 @@ function HomePage({ onNavigate }) {
       <div className="card">
         <h1 style={{fontFamily:"'Playfair Display',serif",fontSize:"2.4rem",lineHeight:1.1,marginBottom:"0.75rem"}}>Put yourself <em style={{fontStyle:"italic",color:"var(--coral)"}}>out there.</em> Literally.</h1>
         <p style={{color:"var(--muted)",fontSize:"0.95rem",lineHeight:1.6,marginBottom:"2rem"}}>A QR code on your bag, your jacket, your coffee cup. Someone scans it. They land on your Instagram. You decide what happens next.</p>
-        <button style={{display:"block",width:"100%",padding:"1rem",background:"var(--ink)",color:"white",border:"none",borderRadius:"14px",fontFamily:"'DM Sans',sans-serif",fontSize:"1rem",fontWeight:600,cursor:"pointer"}} onClick={() => onNavigate("lori")}>See an example →</button>
-        <hr className="divider" />
-        <p style={{fontSize:"0.78rem",color:"var(--muted)",textAlign:"center",lineHeight:1.6}}>
-          Want your own page?{" "}
-          <a href="https://instagram.com/curlier_lori" target="_blank" rel="noopener noreferrer" style={{color:"var(--coral)",fontWeight:500}}>Reach out to Lori.</a>
-        </p>
+        <button style={{display:"block",width:"100%",padding:"1rem",background:"var(--ink)",color:"white",border:"none",borderRadius:"14px",fontFamily:"'DM Sans',sans-serif",fontSize:"1rem",fontWeight:600,cursor:"pointer"}} onClick={() => onNavigate("lori")}>Meet Lori →</button>
       </div>
     </div>
   );
