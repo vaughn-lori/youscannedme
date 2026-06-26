@@ -316,14 +316,27 @@ const FRIEND_PROFILES = {
   }
 };
 
+function getInitialPage() {
+  const path = window.location.pathname.replace("/", "").toLowerCase();
+  if (path === "lori") return "lori";
+  if (path === "michelle") return "michelle";
+  if (path === "stephanie") return "stephanie";
+  if (path === "create") return "create";
+  return "home";
+}
+
 export default function App() {
-  const [page, setPage] = useState("home");
+  const [page, setPage] = useState(getInitialPage);
   const [activeProfile, setActiveProfile] = useState(null);
+
   function navigate(to, profile = null) {
     setPage(to);
     if (profile) setActiveProfile(profile);
+    const pathMap = { home: "/", lori: "/lori", michelle: "/michelle", stephanie: "/stephanie", create: "/create" };
+    window.history.pushState({}, "", pathMap[to] || "/");
     window.scrollTo(0, 0);
   }
+
   return (
     <>
       <style>{STYLES}</style>
