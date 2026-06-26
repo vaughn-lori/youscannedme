@@ -170,7 +170,7 @@ function ProfilePage({ profile, onNavigate }) {
         <div style={{textAlign:"left",fontSize:"0.9rem",lineHeight:1.75,color:"var(--ink)"}}>
           {isLori ? (
             <>
-              <p style={{marginBottom:"0.75rem"}}>Hi, I'm Lori. I'm 47, I'm single, and yes — I put a QR code on my bag. (I also built this site.)</p>
+              <p style={{marginBottom:"0.75rem"}}>Hi, I'm Lori. I'm 47, I'm single, and I'm based in the Denver/Boulder, CO area. Yes — I put a QR code on my bag. (I also built this site.)</p>
               <p style={{marginBottom:"0.75rem"}}>Product leader. Gardener. Amateur chef. Community builder. Wine enthusiast. AI nerd. Broncos season ticket holder.</p>
               <p style={{marginBottom:"0.75rem"}}>I'm happiest creating spaces where people feel welcome — whether that's around a dinner table, in a garden, or over a great conversation.</p>
               <p>If you're curious enough to scan a stranger's QR code, we probably already have something in common.</p>
