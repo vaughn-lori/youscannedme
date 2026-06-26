@@ -303,8 +303,8 @@ function CreatePage({ onNavigate }) {
         <a className="nav-link" onClick={() => onNavigate("home")}>← Home</a>
       </nav>
       <div className="card">
-        <h1 style={{fontFamily:"'Playfair Display',serif",fontSize:"2rem",lineHeight:1.2,marginBottom:"0.4rem"}}>Make your <em style={{color:"var(--coral)",fontStyle:"italic"}}>card.</em></h1>
-        <p style={{fontSize:"0.9rem",color:"var(--muted)",lineHeight:1.6,marginBottom:"1.75rem"}}>Two minutes. A printable QR card that sends people straight to your Instagram.</p>
+        <h1 style={{fontFamily:"'Playfair Display',serif",fontSize:"2rem",lineHeight:1.2,marginBottom:"0.4rem"}}>Make your <em style={{color:"var(--coral)",fontStyle:"italic"}}>QR code.</em></h1>
+        <p style={{fontSize:"0.9rem",color:"var(--muted)",lineHeight:1.6,marginBottom:"1.75rem"}}>Two minutes. A printable QR code that sends people straight to your Instagram.</p>
 
         <label className="field-label">Your first name *</label>
         <input className="field" type="text" placeholder="Your name" value={firstName} onChange={e=>setFirstName(e.target.value)} />
@@ -324,8 +324,8 @@ function CreatePage({ onNavigate }) {
           <input className="field" type="text" placeholder="This is your moment." value={customTagline} onChange={e=>setCustomTagline(e.target.value)} />
         )}
 
-        <button className="submit-btn" onClick={handleCreate}>Generate my QR card →</button>
-        <p className="fine-print">No account needed. No data stored. Scan goes straight to your IG.</p>
+        <button className="submit-btn" onClick={handleCreate}>Generate my QR code →</button>
+        <p className="fine-print">No account needed. No data stored. Scan goes straight to your IG profile.</p>
       </div>
     </div>
   );
