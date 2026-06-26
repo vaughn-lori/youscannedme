@@ -216,49 +216,51 @@ function ProfilePage({ profile, onNavigate }) {
 function CreatePage({ onNavigate }) {
   const [step, setStep] = useState(1);
   const [firstName, setFirstName] = useState("");
-  const [slug, setSlug] = useState("");
   const [ig, setIg] = useState("");
   const [selectedTagline, setSelectedTagline] = useState("t2");
   const [customTagline, setCustomTagline] = useState("");
-  const [profile, setProfile] = useState(null);
   const [qrUrl, setQrUrl] = useState("");
+  const [chosenIg, setChosenIg] = useState("");
 
   const chosenTagline = selectedTagline === "custom" ? customTagline : (TAGLINES.find(t => t.id === selectedTagline)?.text || "");
 
   function handleCreate() {
-    if (!firstName) { alert("We need at least your name!"); return; }
-    if (selectedTagline === "custom" && !customTagline) { alert("Add your custom tagline or pick one from the list."); return; }
-    const cleanSlug = slug || firstName.toLowerCase().replace(/\s+/g, "");
-    const pageUrl = `https://youscannedme.com/${cleanSlug}`;
-    setQrUrl(generateQRDataURL(pageUrl));
-    setProfile({ name: firstName, slug: cleanSlug, ig: ig.replace("@",""), tagline: chosenTagline });
+    if (!firstName) { alert("We need your name!"); return; }
+    if (!ig) { alert("We need your Instagram handle!"); return; }
+    if (selectedTagline === "custom" && !customTagline) { alert("Add your tagline or pick one from the list."); return; }
+    const handle = ig.replace("@", "").trim();
+    const igUrl = `https://instagram.com/${handle}`;
+    setChosenIg(handle);
+    setQrUrl(generateQRDataURL(igUrl));
     setStep(2);
   }
 
-  if (step === 2 && profile) {
-    const pageUrl = `https://youscannedme.com/${profile.slug}`;
+  function downloadCard() {
+    const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>QR Card — ${firstName}</title><style>@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=DM+Sans:wght@400;600&display=swap');body{background:#f5f0eb;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;font-family:'DM Sans',sans-serif;}.card{background:white;width:340px;padding:2.5rem 2rem;border-radius:20px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,0.08);}.tagline{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;line-height:1.35;margin-bottom:0.75rem;color:#12112A;}.arrow{color:#D95F5F;font-size:1.2rem;display:block;margin:0.5rem 0;}.qr{width:200px;height:200px;display:block;margin:0 auto;border:2.5px solid #F0C4C4;border-radius:12px;padding:6px;}.badge{display:inline-block;background:#12112A;color:white;font-size:0.85rem;font-weight:600;padding:0.4rem 1.1rem;border-radius:100px;margin-top:1rem;}.sub{font-family:'Playfair Display',serif;font-style:italic;font-size:0.9rem;color:#D95F5F;margin-top:0.6rem;}@media print{body{background:white;}.card{box-shadow:none;}}</style></head><body><div class="card"><p class="tagline">"${chosenTagline}"</p><span class="arrow">&#x2B07;</span><img class="qr" src="${qrUrl}" alt="QR"/><div class="badge">Single.</div><p class="sub">Please use your powers for good.</p></div></body></html>`;
+    const blob = new Blob([html], { type: "text/html" });
+    window.open(URL.createObjectURL(blob), "_blank");
+  }
+
+  if (step === 2) {
     return (
       <div className="page">
         <nav className="nav">
-          <span className="nav-logo">youscannedme</span>
-          <span className="nav-link" onClick={() => setStep(1)}>← Start over</span>
+          <span className="nav-logo" style={{cursor:"pointer"}} onClick={() => onNavigate("home")}>youscannedme</span>
+          <span className="nav-link" style={{cursor:"pointer"}} onClick={() => setStep(1)}>← Start over</span>
         </nav>
         <div className="card" style={{textAlign:"center"}}>
           <p style={{fontSize:"0.7rem",letterSpacing:"0.15em",textTransform:"uppercase",color:"var(--muted)",fontWeight:600,marginBottom:"1rem"}}>Your card is ready</p>
-          <p style={{fontFamily:"'Playfair Display',serif",fontSize:"1.5rem",marginBottom:"0.5rem"}}>Here you go, <em style={{color:"var(--coral)",fontStyle:"italic"}}>{profile.name}.</em></p>
-          <p style={{fontSize:"0.85rem",color:"var(--muted)",marginBottom:"0.5rem"}}>Your page URL:</p>
-          <div className="url-chip">{pageUrl}</div>
-          <div className="qr-card-preview" style={{marginTop:"1rem"}}>
+          <p style={{fontFamily:"'Playfair Display',serif",fontSize:"1.5rem",marginBottom:"1.25rem"}}>Here you go, <em style={{color:"var(--coral)",fontStyle:"italic"}}>{firstName}.</em></p>
+          <div style={{background:"white",border:"2.5px solid var(--blush)",borderRadius:"20px",padding:"2rem 1.5rem",marginBottom:"1.25rem"}}>
             <p style={{fontFamily:"'Playfair Display',serif",fontSize:"1.1rem",fontStyle:"italic",marginBottom:"0.5rem"}}>"{chosenTagline}"</p>
             <span style={{color:"var(--coral)",display:"block",margin:"0.5rem 0"}}>&#x2B07;</span>
             <img src={qrUrl} alt="QR code" style={{display:"block",width:"180px",height:"180px",margin:"0 auto"}} />
             <div style={{display:"inline-block",background:"var(--ink)",color:"white",fontSize:"0.8rem",fontWeight:600,padding:"0.35rem 1rem",borderRadius:"100px",marginTop:"0.85rem"}}>Single.</div>
             <p style={{fontFamily:"'Playfair Display',serif",fontStyle:"italic",fontSize:"0.85rem",color:"var(--coral)",marginTop:"0.5rem"}}>Please use your powers for good.</p>
           </div>
-          <hr className="divider" />
-          <p style={{fontSize:"0.78rem",color:"var(--muted)",lineHeight:1.6}}>
-            Want to go live? DM <a href="https://instagram.com/curlier_lori" target="_blank" style={{color:"var(--coral)"}}>@curlier_lori</a> — she built this and can add your page anytime.
-          </p>
+          <p style={{fontSize:"0.78rem",color:"var(--muted)",marginBottom:"1rem"}}>Scans go straight to <strong>@{chosenIg}</strong> on Instagram.</p>
+          <button className="submit-btn" onClick={downloadCard}>Open print-ready card</button>
+          <p className="fine-print" style={{marginTop:"0.75rem"}}>Print or save as PDF — sized for Vistaprint or a home printer.</p>
         </div>
       </div>
     );
@@ -267,19 +269,20 @@ function CreatePage({ onNavigate }) {
   return (
     <div className="page">
       <nav className="nav">
-        <span className="nav-logo">youscannedme</span>
+        <span className="nav-logo" style={{cursor:"pointer"}} onClick={() => onNavigate("home")}>youscannedme</span>
         <a className="nav-link" onClick={() => onNavigate("home")}>← Home</a>
       </nav>
       <div className="card">
-        <h1 style={{fontFamily:"'Playfair Display',serif",fontSize:"2rem",lineHeight:1.2,marginBottom:"0.4rem"}}>Make your <em style={{color:"var(--coral)",fontStyle:"italic"}}>own</em> page.</h1>
-        <p style={{fontSize:"0.9rem",color:"var(--muted)",lineHeight:1.6,marginBottom:"1.75rem"}}>Takes two minutes. Gets you a printable QR card.</p>
+        <h1 style={{fontFamily:"'Playfair Display',serif",fontSize:"2rem",lineHeight:1.2,marginBottom:"0.4rem"}}>Make your <em style={{color:"var(--coral)",fontStyle:"italic"}}>card.</em></h1>
+        <p style={{fontSize:"0.9rem",color:"var(--muted)",lineHeight:1.6,marginBottom:"1.75rem"}}>Two minutes. A printable QR card that sends people straight to your Instagram.</p>
+
         <label className="field-label">Your first name *</label>
         <input className="field" type="text" placeholder="Your name" value={firstName} onChange={e=>setFirstName(e.target.value)} />
-        <label className="field-label">Your URL slug (optional)</label>
-        <input className="field" type="text" placeholder={firstName ? firstName.toLowerCase() : "yourname"} value={slug} onChange={e=>setSlug(e.target.value.toLowerCase().replace(/\s+/g,""))} />
-        <p style={{fontSize:"0.7rem",color:"var(--muted)",marginTop:"0.25rem"}}>youscannedme.com/<strong>{slug || (firstName ? firstName.toLowerCase() : "yourname")}</strong></p>
-        <label className="field-label">Instagram handle</label>
+
+        <label className="field-label">Your Instagram handle *</label>
         <input className="field" type="text" placeholder="@yourhandle" value={ig} onChange={e=>setIg(e.target.value)} />
+        <p style={{fontSize:"0.7rem",color:"var(--muted)",marginTop:"0.3rem"}}>The QR will point straight to your IG profile.</p>
+
         <label className="field-label" style={{marginTop:"1.25rem"}}>Pick your tagline *</label>
         <div style={{marginBottom:"0.75rem"}}>
           {TAGLINES.filter(t => t.id !== "custom").map(t => (
@@ -290,8 +293,9 @@ function CreatePage({ onNavigate }) {
         {selectedTagline === "custom" && (
           <input className="field" type="text" placeholder="This is your moment." value={customTagline} onChange={e=>setCustomTagline(e.target.value)} />
         )}
-        <button className="submit-btn" onClick={handleCreate}>Generate my QR card &rarr;</button>
-        <p className="fine-print">No account needed. No data sold. Just vibes and QR codes.</p>
+
+        <button className="submit-btn" onClick={handleCreate}>Generate my QR card →</button>
+        <p className="fine-print">No account needed. No data stored. Scan goes straight to your IG.</p>
       </div>
     </div>
   );
