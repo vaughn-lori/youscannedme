@@ -71,8 +71,11 @@ function AudioPlayer() {
 
 function WhatIsThis() {
   return (
-    <div className="what-is-this">
-      You just scanned a QR code on someone's bag. That someone is single, and apparently not shy about it. Take a look around — and if something here makes you smile, say hi.
+    <div style={{position:"relative",textAlign:"center",margin:"0 0 1.5rem",padding:"0.75rem 0"}}>
+      <div style={{position:"absolute",top:"50%",left:0,right:0,height:"1px",background:"var(--blush)"}} />
+      <span style={{position:"relative",background:"var(--white)",padding:"0 1rem",fontSize:"0.82rem",color:"var(--muted)",fontStyle:"italic"}}>
+        single · bold · happy you're here
+      </span>
     </div>
   );
 }
