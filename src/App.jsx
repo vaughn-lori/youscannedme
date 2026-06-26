@@ -72,7 +72,7 @@ function AudioPlayer() {
 function WhatIsThis() {
   return (
     <div className="what-is-this">
-      Someone single and a little bold put a QR code on something they wear. You scanned it. Now you're here. <strong style={{color:"var(--ink)"}}>Say hi if you're interested.</strong>
+      You just scanned a QR code on someone's bag. That someone is single, and apparently not shy about it. Take a look around — and if something here makes you smile, say hi.
     </div>
   );
 }
@@ -150,18 +150,6 @@ function ProfilePage({ profile, onNavigate }) {
         <p className="profile-name">— {prof.name}</p>
 
         {isLori && (
-          <div style={{display:"flex",flexWrap:"wrap",gap:"0.5rem",justifyContent:"center",marginBottom:"1.25rem"}}>
-            <span style={{background:"var(--ink)",color:"white",fontSize:"0.8rem",fontWeight:600,padding:"0.35rem 0.9rem",borderRadius:"100px"}}>Single.</span>
-            <span style={{background:"var(--bubble)",border:"1.5px solid var(--blush)",color:"var(--ink)",fontSize:"0.8rem",fontWeight:500,padding:"0.35rem 0.9rem",borderRadius:"100px"}}>47</span>
-            <span style={{background:"var(--bubble)",border:"1.5px solid var(--blush)",color:"var(--ink)",fontSize:"0.8rem",padding:"0.35rem 0.9rem",borderRadius:"100px"}}>🌱 Gardening</span>
-            <span style={{background:"var(--bubble)",border:"1.5px solid var(--blush)",color:"var(--ink)",fontSize:"0.8rem",padding:"0.35rem 0.9rem",borderRadius:"100px"}}>🏈 Football</span>
-            <span style={{background:"var(--bubble)",border:"1.5px solid var(--blush)",color:"var(--ink)",fontSize:"0.8rem",padding:"0.35rem 0.9rem",borderRadius:"100px"}}>🐕 Dogs</span>
-            <span style={{background:"var(--bubble)",border:"1.5px solid var(--blush)",color:"var(--ink)",fontSize:"0.8rem",padding:"0.35rem 0.9rem",borderRadius:"100px"}}>🍽️ Foodie</span>
-            <span style={{background:"var(--bubble)",border:"1.5px solid var(--blush)",color:"var(--ink)",fontSize:"0.8rem",padding:"0.35rem 0.9rem",borderRadius:"100px"}}>⛺ Adventure</span>
-          </div>
-        )}
-
-        {isLori && (
           <div style={{margin:"1rem 0"}}>
             <img src={P1} alt="Lori" style={{width:"100%",aspectRatio:"4/3",objectFit:"cover",objectPosition:"center 55%",borderRadius:"14px",marginBottom:"0.5rem"}} />
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:"0.5rem"}}>
@@ -179,10 +167,10 @@ function ProfilePage({ profile, onNavigate }) {
         <div style={{textAlign:"left",fontSize:"0.9rem",lineHeight:1.75,color:"var(--ink)"}}>
           {isLori ? (
             <>
-              <p style={{marginBottom:"0.75rem"}}>Hi, I am Lori.</p>
-              <p style={{marginBottom:"0.75rem"}}>Product leader. Gardener. Amateur chef. Community builder. Wine enthusiast. AI nerd.</p>
-              <p style={{marginBottom:"0.75rem"}}>I am happiest creating spaces where people feel welcome - whether that is around a dinner table, in a garden, or over a great conversation.</p>
-              <p>If you are curious enough to scan a stranger's QR code, we probably already have something in common.</p>
+              <p style={{marginBottom:"0.75rem"}}>Hi, I'm Lori. I'm 47, I'm single, and yes — I put a QR code on my bag.</p>
+              <p style={{marginBottom:"0.75rem"}}>Product leader. Gardener. Amateur chef. Community builder. Wine enthusiast. AI nerd. Broncos season ticket holder.</p>
+              <p style={{marginBottom:"0.75rem"}}>I'm happiest creating spaces where people feel welcome — whether that's around a dinner table, in a garden, or over a great conversation.</p>
+              <p>If you're curious enough to scan a stranger's QR code, we probably already have something in common.</p>
             </>
           ) : (
             prof.bio && prof.bio.map((line, i) => (
