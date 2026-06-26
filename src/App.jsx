@@ -72,7 +72,7 @@ function AudioPlayer() {
 function WhatIsThis() {
   return (
     <div className="what-is-this">
-      <strong style={{color:"var(--ink)"}}>youscannedme.com</strong> — you just scanned a QR code on someone's bag, jacket, or whatever they decided to put it on. This is their page. Say hi if you're curious.
+      Someone single and a little bold put a QR code on something they wear. You scanned it. Now you're here. <strong style={{color:"var(--ink)"}}>Say hi if you're interested.</strong>
     </div>
   );
 }
@@ -148,6 +148,18 @@ function ProfilePage({ profile, onNavigate }) {
 
         <p className="profile-tagline">"{prof.tagline}"</p>
         <p className="profile-name">— {prof.name}</p>
+
+        {isLori && (
+          <div style={{display:"flex",flexWrap:"wrap",gap:"0.5rem",justifyContent:"center",marginBottom:"1.25rem"}}>
+            <span style={{background:"var(--ink)",color:"white",fontSize:"0.8rem",fontWeight:600,padding:"0.35rem 0.9rem",borderRadius:"100px"}}>Single.</span>
+            <span style={{background:"var(--bubble)",border:"1.5px solid var(--blush)",color:"var(--ink)",fontSize:"0.8rem",fontWeight:500,padding:"0.35rem 0.9rem",borderRadius:"100px"}}>47</span>
+            <span style={{background:"var(--bubble)",border:"1.5px solid var(--blush)",color:"var(--ink)",fontSize:"0.8rem",padding:"0.35rem 0.9rem",borderRadius:"100px"}}>🌱 Gardening</span>
+            <span style={{background:"var(--bubble)",border:"1.5px solid var(--blush)",color:"var(--ink)",fontSize:"0.8rem",padding:"0.35rem 0.9rem",borderRadius:"100px"}}>🏈 Football</span>
+            <span style={{background:"var(--bubble)",border:"1.5px solid var(--blush)",color:"var(--ink)",fontSize:"0.8rem",padding:"0.35rem 0.9rem",borderRadius:"100px"}}>🐕 Dogs</span>
+            <span style={{background:"var(--bubble)",border:"1.5px solid var(--blush)",color:"var(--ink)",fontSize:"0.8rem",padding:"0.35rem 0.9rem",borderRadius:"100px"}}>🍽️ Foodie</span>
+            <span style={{background:"var(--bubble)",border:"1.5px solid var(--blush)",color:"var(--ink)",fontSize:"0.8rem",padding:"0.35rem 0.9rem",borderRadius:"100px"}}>⛺ Adventure</span>
+          </div>
+        )}
 
         {isLori && (
           <div style={{margin:"1rem 0"}}>
