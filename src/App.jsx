@@ -168,7 +168,7 @@ function ProfilePage({ profile, onNavigate }) {
             <img src={prof.photos[0]} alt={prof.name} style={{width:"100%",aspectRatio:"1/1",objectFit:"cover",objectPosition:"center top",borderRadius:"14px",marginBottom:"0.5rem"}} />
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:"0.5rem"}}>
               {prof.photos.slice(1).map((src, i) => (
-                <img key={i} src={src} alt={prof.name} style={{width:"100%",aspectRatio:"1/1",objectFit:"cover",objectPosition:"top",borderRadius:"10px"}} />
+                <img key={i} src={src} alt={prof.name} style={{width:"100%",aspectRatio:"1/1",objectFit:"cover",objectPosition:"center top",borderRadius:"10px"}} />
               ))}
             </div>
           </div>
