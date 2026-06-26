@@ -138,6 +138,9 @@ function ProfilePage({ profile, onNavigate }) {
       <div className="card" style={{textAlign:"center",maxWidth:"480px"}}>
         <p className="profile-tagline">"{p.tagline}"</p>
         <p className="profile-name">— {p.name}</p>
+        {!isLori && (
+          <p style={{fontSize:"0.65rem",letterSpacing:"0.12em",textTransform:"uppercase",color:"var(--coral)",fontWeight:700,marginBottom:"1rem"}}>✓ Lori Approved</p>
+        )}
 
         {isLori && (
           <div style={{margin:"1rem 0"}}>
@@ -196,11 +199,13 @@ function ProfilePage({ profile, onNavigate }) {
             <p style={{fontSize:"0.78rem",color:"var(--muted)",marginBottom:"0.75rem"}}>They also put QR codes on things. You're welcome.</p>
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0.75rem"}}>
               <div className="friend-card" style={{cursor:"pointer"}} onClick={() => onNavigate("michelle")}>
+                <p style={{fontSize:"0.65rem",letterSpacing:"0.12em",textTransform:"uppercase",color:"var(--coral)",fontWeight:700,marginBottom:"0.3rem"}}>✓ Lori Approved</p>
                 <p className="friend-name">Michelle</p>
                 <p className="friend-tag">Foodie. Wine snob. Traveler. Dog lover.</p>
                 <span style={{display:"inline-block",background:"var(--coral)",color:"white",fontSize:"0.75rem",fontWeight:500,padding:"0.4rem 0.85rem",borderRadius:"100px"}}>See her page →</span>
               </div>
               <div className="friend-card" style={{cursor:"pointer"}} onClick={() => onNavigate("stephanie")}>
+                <p style={{fontSize:"0.65rem",letterSpacing:"0.12em",textTransform:"uppercase",color:"var(--coral)",fontWeight:700,marginBottom:"0.3rem"}}>✓ Lori Approved</p>
                 <p className="friend-name">Stephanie</p>
                 <p className="friend-tag">Urban farmer. Beekeeper. Wino. Sci-fi nerd.</p>
                 <span style={{display:"inline-block",background:"var(--coral)",color:"white",fontSize:"0.75rem",fontWeight:500,padding:"0.4rem 0.85rem",borderRadius:"100px"}}>See her page →</span>
@@ -310,7 +315,13 @@ function CreatePage({ onNavigate }) {
               </a>
             ))}
           </div>
-          <p className="fine-print" style={{marginTop:"0.75rem"}}>Hat and hoodie options coming soon. 15% of every purchase supports this platform.</p>
+          <p className="fine-print" style={{marginTop:"0.75rem"}}>Hat and hoodie options coming soon.</p>
+          <hr style={{border:"none",borderTop:"1.5px solid var(--border)",margin:"1.25rem 0"}} />
+          <p style={{fontSize:"0.78rem",color:"var(--muted)",lineHeight:1.6}}>
+            Want a full page like Lori's?{" "}
+            Pages are by invite — you'll need to know Lori personally.{" "}
+            <a href="https://instagram.com/curlier_lori" target="_blank" rel="noopener noreferrer" style={{color:"var(--coral)",fontWeight:500}}>@curlier_lori</a>
+          </p>
         </div>
       </div>
     );
