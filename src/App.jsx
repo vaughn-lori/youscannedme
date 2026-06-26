@@ -133,7 +133,7 @@ function ProfilePage({ profile, onNavigate }) {
 
         {isLori && (
           <div style={{margin:"1rem 0"}}>
-            <img src={P1} alt="Lori" style={{width:"100%",aspectRatio:"4/3",objectFit:"cover",objectPosition:"center 20%",borderRadius:"14px",marginBottom:"0.5rem"}} />
+            <img src={P1} alt="Lori" style={{width:"100%",aspectRatio:"4/3",objectFit:"cover",objectPosition:"center 55%",borderRadius:"14px",marginBottom:"0.5rem"}} />
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:"0.5rem"}}>
               <img src={P2} alt="Broncos game" style={{width:"100%",aspectRatio:"1/1",objectFit:"cover",objectPosition:"top",borderRadius:"10px"}} />
               <img src={P3} alt="Lori with friends" style={{width:"100%",aspectRatio:"1/1",objectFit:"cover",objectPosition:"top",borderRadius:"10px"}} />
@@ -152,6 +152,15 @@ function ProfilePage({ profile, onNavigate }) {
               <p style={{marginBottom:"0.75rem"}}>Product leader. Gardener. Amateur chef. Community builder. Wine enthusiast. AI nerd.</p>
               <p style={{marginBottom:"0.75rem"}}>I'm happiest creating spaces where people feel welcome — whether that's around a dinner table, in a garden, or over a great conversation.</p>
               <p>If you're curious enough to scan a stranger's QR code, we probably already have something in common.</p>
+            </div>
+          </>
+        )}
+
+        {!isLori && p.bio && (
+          <>
+            <hr className="divider" />
+            <div style={{textAlign:"left",fontSize:"0.9rem",lineHeight:1.75,color:"var(--ink)"}}>
+              {p.bio.map((line, i) => <p key={i} style={{marginBottom: i < p.bio.length - 1 ? "0.75rem" : 0}}>{line}</p>)}
             </div>
           </>
         )}
@@ -178,19 +187,15 @@ function ProfilePage({ profile, onNavigate }) {
             <p style={{fontFamily:"'Playfair Display',serif",fontSize:"1rem",marginBottom:"0.25rem"}}>Meet my single friends.</p>
             <p style={{fontSize:"0.78rem",color:"var(--muted)",marginBottom:"0.75rem"}}>They also put QR codes on things. You're welcome.</p>
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0.75rem"}}>
-              <div className="friend-card">
+              <div className="friend-card" style={{cursor:"pointer"}} onClick={() => onNavigate("michelle")}>
                 <p className="friend-name">Michelle</p>
                 <p className="friend-tag">Foodie. Wine snob. Traveler. Dog lover.</p>
-                <a className="friend-ig" href="https://instagram.com/mbarnesny" target="_blank" rel="noopener noreferrer">
-                  <IgIcon size={12} /> @mbarnesny
-                </a>
+                <span style={{display:"inline-block",background:"var(--coral)",color:"white",fontSize:"0.75rem",fontWeight:500,padding:"0.4rem 0.85rem",borderRadius:"100px"}}>See her page →</span>
               </div>
-              <div className="friend-card">
+              <div className="friend-card" style={{cursor:"pointer"}} onClick={() => onNavigate("stephanie")}>
                 <p className="friend-name">Stephanie</p>
                 <p className="friend-tag">Urban farmer. Beekeeper. Wino. Sci-fi nerd.</p>
-                <a className="friend-ig" href="https://instagram.com/vina_colorado" target="_blank" rel="noopener noreferrer">
-                  <IgIcon size={12} /> @vina_colorado
-                </a>
+                <span style={{display:"inline-block",background:"var(--coral)",color:"white",fontSize:"0.75rem",fontWeight:500,padding:"0.4rem 0.85rem",borderRadius:"100px"}}>See her page →</span>
               </div>
             </div>
           </>
@@ -284,6 +289,33 @@ function CreatePage({ onNavigate }) {
   );
 }
 
+const FRIEND_PROFILES = {
+  michelle: {
+    name: "Michelle",
+    slug: "michelle",
+    ig: "mbarnesny",
+    tagline: "Bold move. Let's see where this goes.",
+    bio: [
+      "Hi, I'm Michelle.",
+      "Foodie, wine snob, traveler, and dog lover.",
+      "I believe the best moments happen around a great meal or on an adventure somewhere new. Bonus points if there's good wine involved.",
+      "If you're here, you're clearly someone who pays attention. I appreciate that."
+    ]
+  },
+  stephanie: {
+    name: "Stephanie",
+    slug: "stephanie",
+    ig: "vina_colorado",
+    tagline: "Single. Verified. Mildly chaotic. Interested?",
+    bio: [
+      "Hi, I'm Stephanie.",
+      "Urban farmer. Beekeeper. Dog mom. Interwebs marketer. Wino. Sci-fi nerd.",
+      "I grow things, keep bees, and somehow also work in tech. My life is a lot. In the best way.",
+      "If you scanned a QR code on a bag, you're probably my kind of person."
+    ]
+  }
+};
+
 export default function App() {
   const [page, setPage] = useState("home");
   const [activeProfile, setActiveProfile] = useState(null);
@@ -297,6 +329,8 @@ export default function App() {
       <style>{STYLES}</style>
       {page === "home" && <HomePage onNavigate={navigate} />}
       {page === "lori" && <ProfilePage profile={null} onNavigate={navigate} />}
+      {page === "michelle" && <ProfilePage profile={FRIEND_PROFILES.michelle} onNavigate={navigate} />}
+      {page === "stephanie" && <ProfilePage profile={FRIEND_PROFILES.stephanie} onNavigate={navigate} />}
       {page === "profile" && <ProfilePage profile={activeProfile} onNavigate={navigate} />}
       {page === "create" && <CreatePage onNavigate={navigate} />}
     </>
