@@ -207,11 +207,21 @@ function ProfilePage({ profile, onNavigate }) {
               </div>
             </div>
             <hr className="divider" />
-            <p style={{fontSize:"0.72rem",color:"var(--muted)",textAlign:"center"}}>
-              Want your own QR shirt?{" "}
-              <a href="https://www.zazzle.com/wanna_date_me_custom_qr_code_scan_me_him_her_gift_t_shirt-256888364453147504?rf=238224018853981499" target="_blank" rel="noopener noreferrer" style={{color:"var(--coral)"}}>Get it on Zazzle →</a>
-              {" "}or{" "}
-              <a style={{color:"var(--coral)",cursor:"pointer",textDecoration:"underline"}} onClick={() => onNavigate("create")}>make your own card</a>.
+            <p style={{fontFamily:"'Playfair Display',serif",fontSize:"0.95rem",marginBottom:"0.75rem"}}>Want your own? Get it on a shirt.</p>
+            <div style={{display:"grid",gridTemplateColumns:"1fr",gap:"0.5rem"}}>
+              <a href="https://www.zazzle.com/wanna_date_me_custom_qr_code_scan_me_him_her_gift_t_shirt-256888364453147504?rf=238224018853981499" target="_blank" rel="noopener noreferrer" style={{display:"block",padding:"0.65rem 1rem",background:"var(--bubble)",border:"1.5px solid var(--blush)",borderRadius:"10px",textDecoration:"none",color:"var(--ink)",fontSize:"0.82rem",fontWeight:500,textAlign:"left"}}>
+                👕 <strong>Wanna Date Me</strong> — Women's QR shirt
+              </a>
+              <a href="https://www.zazzle.com/custom_mens_business_qr_code_scan_me_website_t_shirt-256544030183894915?rf=238224018853981499" target="_blank" rel="noopener noreferrer" style={{display:"block",padding:"0.65rem 1rem",background:"var(--bubble)",border:"1.5px solid var(--blush)",borderRadius:"10px",textDecoration:"none",color:"var(--ink)",fontSize:"0.82rem",fontWeight:500,textAlign:"left"}}>
+                👕 <strong>QR Code Scan Me</strong> — Men's shirt
+              </a>
+              <a href="https://www.zazzle.com/wanna_date_me_custom_qr_code_scan_me_him_her_gift_t_shirt-256608723073220884?rf=238224018853981499" target="_blank" rel="noopener noreferrer" style={{display:"block",padding:"0.65rem 1rem",background:"var(--bubble)",border:"1.5px solid var(--blush)",borderRadius:"10px",textDecoration:"none",color:"var(--ink)",fontSize:"0.82rem",fontWeight:500,textAlign:"left"}}>
+                👕 <strong>Wanna Date Me</strong> — Unisex QR shirt
+              </a>
+            </div>
+            <p style={{fontSize:"0.68rem",color:"var(--muted)",marginTop:"0.5rem",textAlign:"center"}}>
+              Upload your QR code on Zazzle to customize. Or{" "}
+              <a style={{color:"var(--coral)",cursor:"pointer",textDecoration:"underline"}} onClick={() => onNavigate("create")}>make your card first</a>.
             </p>
           </>
         )}
@@ -267,15 +277,21 @@ function CreatePage({ onNavigate }) {
           </div>
           <p style={{fontSize:"0.78rem",color:"var(--muted)",marginBottom:"1rem"}}>Scans go straight to <strong>@{chosenIg}</strong> on Instagram.</p>
           <button className="submit-btn" onClick={downloadCard}>Open print-ready card</button>
-          <a
-            href="https://www.zazzle.com/wanna_date_me_custom_qr_code_scan_me_him_her_gift_t_shirt-256888364453147504?rf=238224018853981499"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{display:"block",width:"100%",marginTop:"0.5rem",padding:"0.85rem",background:"var(--canvas)",color:"var(--ink)",border:"1.5px solid var(--border)",borderRadius:"12px",fontFamily:"'DM Sans',sans-serif",fontSize:"0.95rem",fontWeight:600,cursor:"pointer",textAlign:"center",textDecoration:"none",boxSizing:"border-box"}}
-          >
-            Get it on a shirt 👕
-          </a>
-          <p className="fine-print" style={{marginTop:"0.75rem"}}>Print at home, or grab a tote — your QR, your vibe.</p>        </div>
+          <hr style={{border:"none",borderTop:"1.5px solid var(--border)",margin:"1rem 0"}} />
+          <p style={{fontFamily:"'Playfair Display',serif",fontSize:"0.95rem",marginBottom:"0.75rem",textAlign:"center"}}>Or wear it. 👕</p>
+          <div style={{display:"grid",gridTemplateColumns:"1fr",gap:"0.5rem"}}>
+            <a href="https://www.zazzle.com/wanna_date_me_custom_qr_code_scan_me_him_her_gift_t_shirt-256888364453147504?rf=238224018853981499" target="_blank" rel="noopener noreferrer" style={{display:"block",padding:"0.65rem 1rem",background:"var(--bubble)",border:"1.5px solid var(--blush)",borderRadius:"10px",textDecoration:"none",color:"var(--ink)",fontSize:"0.82rem",fontWeight:500,textAlign:"left"}}>
+              👕 <strong>Wanna Date Me</strong> — Women's QR shirt
+            </a>
+            <a href="https://www.zazzle.com/custom_mens_business_qr_code_scan_me_website_t_shirt-256544030183894915?rf=238224018853981499" target="_blank" rel="noopener noreferrer" style={{display:"block",padding:"0.65rem 1rem",background:"var(--bubble)",border:"1.5px solid var(--blush)",borderRadius:"10px",textDecoration:"none",color:"var(--ink)",fontSize:"0.82rem",fontWeight:500,textAlign:"left"}}>
+              👕 <strong>QR Code Scan Me</strong> — Men's shirt
+            </a>
+            <a href="https://www.zazzle.com/wanna_date_me_custom_qr_code_scan_me_him_her_gift_t_shirt-256608723073220884?rf=238224018853981499" target="_blank" rel="noopener noreferrer" style={{display:"block",padding:"0.65rem 1rem",background:"var(--bubble)",border:"1.5px solid var(--blush)",borderRadius:"10px",textDecoration:"none",color:"var(--ink)",fontSize:"0.82rem",fontWeight:500,textAlign:"left"}}>
+              👕 <strong>Wanna Date Me</strong> — Unisex QR shirt
+            </a>
+          </div>
+          <p className="fine-print" style={{marginTop:"0.75rem"}}>Upload your QR code on Zazzle to customize any of these.</p>
+        </div>
       </div>
     );
   }
