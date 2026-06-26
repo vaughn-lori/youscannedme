@@ -124,8 +124,16 @@ function ProfilePage({ profile, onNavigate }) {
   return (
     <div className="page" style={{paddingTop:"1.5rem",paddingBottom:"3rem"}}>
       <nav className="nav">
-        <span className="nav-logo">youscannedme</span>
-        <a className="nav-link" onClick={() => onNavigate("create")}>Make yours &rarr;</a>
+        <span className="nav-logo" style={{cursor:"pointer"}} onClick={() => onNavigate("home")}>youscannedme</span>
+        <div style={{display:"flex",gap:"1rem",alignItems:"center"}}>
+          {!isLori && (
+            <a className="nav-link" onClick={() => onNavigate("lori")}>← Lori</a>
+          )}
+          {isLori && (
+            <a className="nav-link" onClick={() => onNavigate("home")}>← Home</a>
+          )}
+          <a className="nav-link" onClick={() => onNavigate("create")}>Make yours →</a>
+        </div>
       </nav>
       <div className="card" style={{textAlign:"center",maxWidth:"480px"}}>
         <p className="profile-tagline">"{p.tagline}"</p>
