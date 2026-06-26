@@ -252,11 +252,29 @@ function CreatePage({ onNavigate }) {
     setStep(2);
   }
 
-  function downloadCard() {
-    const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>QR Card — ${firstName}</title><style>@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=DM+Sans:wght@400;600&display=swap');body{background:#f5f0eb;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;font-family:'DM Sans',sans-serif;}.card{background:white;width:340px;padding:2.5rem 2rem;border-radius:20px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,0.08);}.tagline{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;line-height:1.35;margin-bottom:0.75rem;color:#12112A;}.arrow{color:#D95F5F;font-size:1.2rem;display:block;margin:0.5rem 0;}.qr{width:200px;height:200px;display:block;margin:0 auto;border:2.5px solid #F0C4C4;border-radius:12px;padding:6px;}.badge{display:inline-block;background:#12112A;color:white;font-size:0.85rem;font-weight:600;padding:0.4rem 1.1rem;border-radius:100px;margin-top:1rem;}.sub{font-family:'Playfair Display',serif;font-style:italic;font-size:0.9rem;color:#D95F5F;margin-top:0.6rem;}@media print{body{background:white;}.card{box-shadow:none;}}</style></head><body><div class="card"><p class="tagline">"${chosenTagline}"</p><span class="arrow">&#x2B07;</span><img class="qr" src="${qrUrl}" alt="QR"/><div class="badge">Single.</div><p class="sub">Please use your powers for good.</p></div></body></html>`;
-    const blob = new Blob([html], { type: "text/html" });
-    window.open(URL.createObjectURL(blob), "_blank");
+  function downloadQR() {
+    const canvas = document.createElement("canvas");
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      canvas.width = img.width;
+      canvas.height = img.height;
+      canvas.getContext("2d").drawImage(img, 0, 0);
+      const link = document.createElement("a");
+      link.download = `${firstName}-qr-code.png`;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    };
+    img.src = qrUrl;
   }
+
+  const PRODUCTS = [
+    { emoji: "👗", label: "Women's T-shirt", desc: "Wanna Date Me", url: "https://www.zazzle.com/wanna_date_me_custom_qr_code_scan_me_him_her_gift_t_shirt-256888364453147504?rf=238224018853981499" },
+    { emoji: "👕", label: "Men's T-shirt", desc: "QR Code Scan Me", url: "https://www.zazzle.com/custom_mens_business_qr_code_scan_me_website_t_shirt-256544030183894915?rf=238224018853981499" },
+    { emoji: "👕", label: "Unisex T-shirt", desc: "Wanna Date Me", url: "https://www.zazzle.com/wanna_date_me_custom_qr_code_scan_me_him_her_gift_t_shirt-256608723073220884?rf=238224018853981499" },
+    { emoji: "👜", label: "Tote bag", desc: "Minimalist QR Scan Me", url: "https://www.zazzle.com/minimalist_qr_code_scan_me_business_tote_bag-256031509240865420?rf=238224018853981499" },
+    { emoji: "💧", label: "Water bottle", desc: "Custom QR Code", url: "https://www.zazzle.com/custom_qr_code_business_logo_website_text_water_bottle-256115498754143281?rf=238224018853981499" },
+  ];
 
   if (step === 2) {
     return (
@@ -266,31 +284,33 @@ function CreatePage({ onNavigate }) {
           <span className="nav-link" style={{cursor:"pointer"}} onClick={() => setStep(1)}>← Start over</span>
         </nav>
         <div className="card" style={{textAlign:"center"}}>
-          <p style={{fontSize:"0.7rem",letterSpacing:"0.15em",textTransform:"uppercase",color:"var(--muted)",fontWeight:600,marginBottom:"1rem"}}>Your card is ready</p>
+          <p style={{fontSize:"0.7rem",letterSpacing:"0.15em",textTransform:"uppercase",color:"var(--muted)",fontWeight:600,marginBottom:"1rem"}}>Your QR code is ready</p>
           <p style={{fontFamily:"'Playfair Display',serif",fontSize:"1.5rem",marginBottom:"1.25rem"}}>Here you go, <em style={{color:"var(--coral)",fontStyle:"italic"}}>{firstName}.</em></p>
-          <div style={{background:"white",border:"2.5px solid var(--blush)",borderRadius:"20px",padding:"2rem 1.5rem",marginBottom:"1.25rem"}}>
-            <p style={{fontFamily:"'Playfair Display',serif",fontSize:"1.1rem",fontStyle:"italic",marginBottom:"0.5rem"}}>"{chosenTagline}"</p>
-            <span style={{color:"var(--coral)",display:"block",margin:"0.5rem 0"}}>&#x2B07;</span>
-            <img src={qrUrl} alt="QR code" style={{display:"block",width:"180px",height:"180px",margin:"0 auto"}} />
-            <div style={{display:"inline-block",background:"var(--ink)",color:"white",fontSize:"0.8rem",fontWeight:600,padding:"0.35rem 1rem",borderRadius:"100px",marginTop:"0.85rem"}}>Single.</div>
-            <p style={{fontFamily:"'Playfair Display',serif",fontStyle:"italic",fontSize:"0.85rem",color:"var(--coral)",marginTop:"0.5rem"}}>Please use your powers for good.</p>
+
+          <div style={{background:"white",border:"2.5px solid var(--blush)",borderRadius:"20px",padding:"1.5rem",marginBottom:"0.75rem",display:"inline-block"}}>
+            <img src={qrUrl} alt="Your QR code" style={{display:"block",width:"220px",height:"220px"}} crossOrigin="anonymous" />
           </div>
-          <p style={{fontSize:"0.78rem",color:"var(--muted)",marginBottom:"1rem"}}>Scans go straight to <strong>@{chosenIg}</strong> on Instagram.</p>
-          <button className="submit-btn" onClick={downloadCard}>Open print-ready card</button>
-          <hr style={{border:"none",borderTop:"1.5px solid var(--border)",margin:"1rem 0"}} />
-          <p style={{fontFamily:"'Playfair Display',serif",fontSize:"0.95rem",marginBottom:"0.75rem",textAlign:"center"}}>Or wear it. 👕</p>
+          <p style={{fontSize:"0.75rem",color:"var(--muted)",marginBottom:"1.25rem"}}>Scans go straight to <strong>@{chosenIg}</strong> on Instagram.</p>
+
+          <button className="submit-btn" onClick={downloadQR}>Download QR code →</button>
+
+          <hr style={{border:"none",borderTop:"1.5px solid var(--border)",margin:"1.25rem 0"}} />
+          <p style={{fontFamily:"'Playfair Display',serif",fontSize:"1rem",marginBottom:"0.25rem"}}>Put it on something.</p>
+          <p style={{fontSize:"0.78rem",color:"var(--muted)",marginBottom:"0.85rem"}}>Download your QR, then upload it to any of these on Zazzle.</p>
           <div style={{display:"grid",gridTemplateColumns:"1fr",gap:"0.5rem"}}>
-            <a href="https://www.zazzle.com/wanna_date_me_custom_qr_code_scan_me_him_her_gift_t_shirt-256888364453147504?rf=238224018853981499" target="_blank" rel="noopener noreferrer" style={{display:"block",padding:"0.65rem 1rem",background:"var(--bubble)",border:"1.5px solid var(--blush)",borderRadius:"10px",textDecoration:"none",color:"var(--ink)",fontSize:"0.82rem",fontWeight:500,textAlign:"left"}}>
-              👕 <strong>Wanna Date Me</strong> — Women's QR shirt
-            </a>
-            <a href="https://www.zazzle.com/custom_mens_business_qr_code_scan_me_website_t_shirt-256544030183894915?rf=238224018853981499" target="_blank" rel="noopener noreferrer" style={{display:"block",padding:"0.65rem 1rem",background:"var(--bubble)",border:"1.5px solid var(--blush)",borderRadius:"10px",textDecoration:"none",color:"var(--ink)",fontSize:"0.82rem",fontWeight:500,textAlign:"left"}}>
-              👕 <strong>QR Code Scan Me</strong> — Men's shirt
-            </a>
-            <a href="https://www.zazzle.com/wanna_date_me_custom_qr_code_scan_me_him_her_gift_t_shirt-256608723073220884?rf=238224018853981499" target="_blank" rel="noopener noreferrer" style={{display:"block",padding:"0.65rem 1rem",background:"var(--bubble)",border:"1.5px solid var(--blush)",borderRadius:"10px",textDecoration:"none",color:"var(--ink)",fontSize:"0.82rem",fontWeight:500,textAlign:"left"}}>
-              👕 <strong>Wanna Date Me</strong> — Unisex QR shirt
-            </a>
+            {PRODUCTS.map((p, i) => (
+              <a key={i} href={p.url} target="_blank" rel="noopener noreferrer"
+                style={{display:"flex",alignItems:"center",gap:"0.75rem",padding:"0.75rem 1rem",background:"var(--bubble)",border:"1.5px solid var(--blush)",borderRadius:"10px",textDecoration:"none",color:"var(--ink)"}}>
+                <span style={{fontSize:"1.25rem"}}>{p.emoji}</span>
+                <div style={{textAlign:"left"}}>
+                  <p style={{fontSize:"0.82rem",fontWeight:600,lineHeight:1.2}}>{p.label}</p>
+                  <p style={{fontSize:"0.72rem",color:"var(--muted)"}}>{p.desc}</p>
+                </div>
+                <span style={{marginLeft:"auto",color:"var(--coral)",fontSize:"0.8rem"}}>→</span>
+              </a>
+            ))}
           </div>
-          <p className="fine-print" style={{marginTop:"0.75rem"}}>Upload your QR code on Zazzle to customize any of these.</p>
+          <p className="fine-print" style={{marginTop:"0.75rem"}}>Hat and hoodie options coming soon. 15% of every purchase supports this platform.</p>
         </div>
       </div>
     );
