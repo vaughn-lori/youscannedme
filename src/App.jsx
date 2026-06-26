@@ -209,7 +209,7 @@ function ProfilePage({ profile, onNavigate }) {
             <hr className="divider" />
             <p style={{fontSize:"0.72rem",color:"var(--muted)",textAlign:"center"}}>
               Want your own QR bag?{" "}
-              <a href="https://www.zazzle.com/100_cotton_personalized_logo_and_text_tote_bag-149715458495966657?rf=238224018853981499" target="_blank" rel="noopener noreferrer" style={{color:"var(--coral)"}}>Get it on Zazzle →</a>
+              <a href="https://www.zazzle.com/minimalist_qr_code_scan_me_business_tote_bag-256031509240865420?rf=238224018853981499" target="_blank" rel="noopener noreferrer" style={{color:"var(--coral)"}}>Get it on Zazzle →</a>
               {" "}or{" "}
               <a style={{color:"var(--coral)",cursor:"pointer",textDecoration:"underline"}} onClick={() => onNavigate("create")}>make your own card</a>.
             </p>
@@ -268,7 +268,7 @@ function CreatePage({ onNavigate }) {
           <p style={{fontSize:"0.78rem",color:"var(--muted)",marginBottom:"1rem"}}>Scans go straight to <strong>@{chosenIg}</strong> on Instagram.</p>
           <button className="submit-btn" onClick={downloadCard}>Open print-ready card</button>
           <a
-            href="https://www.zazzle.com/100_cotton_personalized_logo_and_text_tote_bag-149715458495966657?rf=238224018853981499"
+            href="https://www.zazzle.com/minimalist_qr_code_scan_me_business_tote_bag-256031509240865420?rf=238224018853981499"
             target="_blank"
             rel="noopener noreferrer"
             style={{display:"block",width:"100%",marginTop:"0.5rem",padding:"0.85rem",background:"var(--canvas)",color:"var(--ink)",border:"1.5px solid var(--border)",borderRadius:"12px",fontFamily:"'DM Sans',sans-serif",fontSize:"0.95rem",fontWeight:600,cursor:"pointer",textAlign:"center",textDecoration:"none",boxSizing:"border-box"}}
