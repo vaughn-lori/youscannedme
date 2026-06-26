@@ -206,6 +206,13 @@ function ProfilePage({ profile, onNavigate }) {
                 <span style={{display:"inline-block",background:"var(--coral)",color:"white",fontSize:"0.75rem",fontWeight:500,padding:"0.4rem 0.85rem",borderRadius:"100px"}}>See her page →</span>
               </div>
             </div>
+            <hr className="divider" />
+            <p style={{fontSize:"0.72rem",color:"var(--muted)",textAlign:"center"}}>
+              Want your own QR bag?{" "}
+              <a href="https://www.zazzle.com/100_cotton_personalized_logo_and_text_tote_bag-149715458495966657?rf=238224018853981499" target="_blank" rel="noopener noreferrer" style={{color:"var(--coral)"}}>Get it on Zazzle →</a>
+              {" "}or{" "}
+              <a style={{color:"var(--coral)",cursor:"pointer",textDecoration:"underline"}} onClick={() => onNavigate("create")}>make your own card</a>.
+            </p>
           </>
         )}
       </div>
@@ -260,8 +267,15 @@ function CreatePage({ onNavigate }) {
           </div>
           <p style={{fontSize:"0.78rem",color:"var(--muted)",marginBottom:"1rem"}}>Scans go straight to <strong>@{chosenIg}</strong> on Instagram.</p>
           <button className="submit-btn" onClick={downloadCard}>Open print-ready card</button>
-          <p className="fine-print" style={{marginTop:"0.75rem"}}>Print or save as PDF — sized for Vistaprint or a home printer.</p>
-        </div>
+          <a
+            href="https://www.zazzle.com/100_cotton_personalized_logo_and_text_tote_bag-149715458495966657?rf=238224018853981499"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{display:"block",width:"100%",marginTop:"0.5rem",padding:"0.85rem",background:"var(--canvas)",color:"var(--ink)",border:"1.5px solid var(--border)",borderRadius:"12px",fontFamily:"'DM Sans',sans-serif",fontSize:"0.95rem",fontWeight:600,cursor:"pointer",textAlign:"center",textDecoration:"none",boxSizing:"border-box"}}
+          >
+            Get it on a bag 👜
+          </a>
+          <p className="fine-print" style={{marginTop:"0.75rem"}}>Print at home, or grab a tote — your QR, your vibe.</p>        </div>
       </div>
     );
   }
