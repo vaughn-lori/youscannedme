@@ -104,9 +104,8 @@ function HomePage({ onNavigate }) {
         <a className="nav-link" onClick={() => onNavigate("create")}>Make yours &rarr;</a>
       </nav>
       <div className="card">
-        <p style={{fontSize:"0.7rem",letterSpacing:"0.2em",textTransform:"uppercase",color:"var(--coral)",fontWeight:600,marginBottom:"0.75rem"}}>The dating app that fits in your pocket</p>
         <h1 style={{fontFamily:"'Playfair Display',serif",fontSize:"2.4rem",lineHeight:1.1,marginBottom:"0.75rem"}}>Put yourself <em style={{fontStyle:"italic",color:"var(--coral)"}}>out there.</em> Literally.</h1>
-        <p style={{color:"var(--muted)",fontSize:"0.95rem",lineHeight:1.6,marginBottom:"2rem"}}>A QR code on your bag, your jacket, your coffee cup. Someone scans it. They land on your page. They shoot their shot. You decide what happens next.</p>
+        <p style={{color:"var(--muted)",fontSize:"0.95rem",lineHeight:1.6,marginBottom:"2rem"}}>A QR code on your bag, your jacket, your coffee cup. Someone scans it. They land on your Instagram. You decide what happens next.</p>
         <button style={{display:"block",width:"100%",padding:"1rem",background:"var(--ink)",color:"white",border:"none",borderRadius:"14px",fontFamily:"'DM Sans',sans-serif",fontSize:"1rem",fontWeight:600,cursor:"pointer"}} onClick={() => onNavigate("create")}>Make my QR page &rarr;</button>
         <hr className="divider" />
         <div style={{display:"flex",alignItems:"center",gap:"0.5rem",fontSize:"0.85rem",color:"var(--muted)",justifyContent:"center",cursor:"pointer"}} onClick={() => onNavigate("lori")}>
